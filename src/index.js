@@ -1,12 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Cat from './Cat';
+import './cat.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let getRandomCatImage = () => {
+    const api = 'https://aws.random.cat/meow';
+    return fetch(api).then(response => {
+        const promise = response.json();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+        promise.then((data) => {
+            props.imgSrc = data.file;
+            render();
+        });
+        return response;
+    });
+};
+
+let props = {
+    imgSrc: '',
+    getRandomCatImage
+};
+
+const CatWrapper = () => {
+    return (
+        <div className="cat-container">
+            <Cat {...props}/>
+        </div>
+    );
+}
+
+const render = () => {
+    ReactDOM.render(<CatWrapper {...props}/>, document.getElementById('root'));
+}
+
+render();
+getRandomCatImage();

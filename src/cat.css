@@ -1,0 +1,29 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #181818;
+}
+
+.cat-container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.cat-btn {
+    border: none;
+    background: #30a9de;
+    color: #f0f5f9;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    margin: 10px 0;
+}
+
+.cat-img {
+    width: 100%;
+}
